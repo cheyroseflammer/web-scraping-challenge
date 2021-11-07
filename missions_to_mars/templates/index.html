@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible"
+    content="IE=edge">
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+  <title>Mars Scraper</title>
+  <link rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="text-center">
+      <h1>Mars</h1>
+      <p>Fun Facts Below</p>
+      <p><a href="/scrape"
+          class="btn btn-primary btn-lg">Just Click Me!</a></p>
+    </div>
+  </div>
+  <h2>The Latest Mars News</h2>
+  <h3>Title: {{mars_dict.news_title}}</h3>
+  <h3>Paragraph: {{mars_dict.news_p}}</h3>
+  <div class="row">
+    <div class='col-lg-6'>
+      <h2>Featured Mars Image</h2>
+      <img src="{{ mars_dict.featured_image }}"
+        alt="Mars">
+    </div>
+    <div class='col-lg-6'>
+      <h2>Mars vs. Earth Comparison</h2>
+      {{ mars_dict.mars_facts|safe }}
+    </div>
+
+    <!-- Test -->
+    <div class = 'row'>
+      <h2 style='text-align: center;'>Mars Hemispheres</h2>
+      
+      {% for x in range(4) %}
+      <div class = 'col-lg-3'>
+          <div class="card">
+              <img class="card-img-top" src="{{ mars_dict.hemi_imgs[x]['url'] }}" alt="Card image cap" style="width: 100%; height: auto; object-fit: cover;">
+              <div class="card-body">
+                <h3 class="card-title">{{ mars_dict.hemi_imgs[x]['title'] }}</h3>
+              </div>
+            </div>
+      </div>
+      {% endfor %}
+</body>
+
+</html>
