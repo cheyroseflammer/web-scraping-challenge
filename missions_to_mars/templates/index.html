@@ -34,21 +34,23 @@
       <h2>Mars vs. Earth Comparison</h2>
       {{ mars_dict.mars_facts|safe }}
     </div>
+  </div>
 
-    <!-- Test -->
-    <div class = 'row'>
-      <h2 style='text-align: center;'>Mars Hemispheres</h2>
-      
-      {% for x in range(4) %}
-      <div class = 'col-lg-3'>
-          <div class="card">
-              <img class="card-img-top" src="{{ mars_dict.hemi_imgs[x]['url'] }}" alt="Card image cap" style="width: 100%; height: auto; object-fit: cover;">
-              <div class="card-body">
-                <h3 class="card-title">{{ mars_dict.hemi_imgs[x]['title'] }}</h3>
-              </div>
+<!-- TEST -->
+  <div class = 'row'>
+    <h2 style='text-align: center;'>Mars Hemispheres</h2>
+    
+    {% for x in range(4) %}
+    <div class = 'col-lg-3'>
+        <div class="card">
+            <img class="card-img-top" src="{{ mars_dict.hemi_imgs[x]['url'] }}" alt="Card image cap" style="width: 100%; height: auto; object-fit: cover;">
+            <div class="card-body">
+              <h3 class="card-title">{{ mars_dict.hemi_imgs[x]['title'] }}</h3>
             </div>
-      </div>
-      {% endfor %}
+          </div>
+    </div>
+    
+    {% endfor %}
 </body>
 
 </html>

@@ -21,7 +21,7 @@ def scrape():
     html_one = browser.html
     soup = BeautifulSoup(html_one, 'html.parser')
     # Assign vars
-    title = soup.find('div', class_= 'content_title').text
+    title = soup.find('div', class_ = 'content_title').text
     paragraph = soup.find('div', class_= 'article_teaser_body').text
     # Append to mars_dict
     mars_dict['news_title'] = title
@@ -67,21 +67,22 @@ def scrape():
     # Parse
     parser = BeautifulSoup(hem_html, "html.parser")
     # Grab divs
-    results = parser.find_all('div', class_='description')
+    results = parser.find_all('div', class_='item')
     # Create a mars_dict to append results to 
     hemi_imgs = []
     # For loop
     for result in results:
         dict = {}
-        title = result.find('h3').text
+        item = result.find('div', class_='description')
+        title = item.find('h3').text
         # Create browser click method
         browser.links.find_by_partial_text(title).click()
         # Grab image results now
-        html_img = browser.html
-        parser_img = BeautifulSoup(html_img, 'html.parser')
-        img_results = parser_img.find('img', class_='wide-image')['src']
+        html = browser.html
+        parser_img = BeautifulSoup(html, 'html.parser')
+        img_path = parser_img.find('img', class_='wide-image')['src']
         # Put urls together
-        img_url = hem_url + img_results
+        img_url = hem_url + img_path
         dict['title'] = title
         dict['url'] = img_url
         # Append result 
@@ -91,7 +92,7 @@ def scrape():
     mars_dict['hemi_imgs'] = hemi_imgs
      # Close browser instance
     browser.quit()
-    # Show results
-    print(mars_dict)
-    
-scrape()
+    return mars_dict
+
+if __name__ == "__main__":
+    app.run(debug=True)
