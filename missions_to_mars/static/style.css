@@ -1,0 +1,25 @@
+body {
+  text-align: center;
+}
+
+img {
+  width: 75%;
+  object-fit: cover;
+}
+
+h4 {
+  padding: 10px;
+}
+
+h2 {
+  padding-bottom: 20px;
+}
+
+.dataframe {
+  margin-left: 30%;
+  font-size: 15px;
+}
+
+td, th {
+  padding: 3px;
+}
